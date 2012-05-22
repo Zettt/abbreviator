@@ -54,7 +54,21 @@ while i < abbrevsArray.length
     outputAbbrevs.concat "\t\t\t<key>abbreviation</key>\n"
     outputAbbrevs.concat "\t\t\t<string>" + abbrevsArray[i][0] + "</string>\n"
     outputAbbrevs.concat "\t\t\t<key>abbreviationMode</key>\n"
-    outputAbbrevs.concat "\t\t\t<integer>2</integer>\n"
+
+	# abbreviationMode
+	# 0 = case sensitive
+	# 1 = case insensitive
+	# 2 = adapt to case
+	if abbrevsArray[i][2] == "sensitive"
+		outputAbbrevs.concat "\t\t\t<integer>0</integer>\n"
+	elsif abbrevsArray[i][2] == "insensitive"
+		outputAbbrevs.concat "\t\t\t<integer>1</integer>\n"
+	elsif abbrevsArray[i][2] == "adapt"
+		outputAbbrevs.concat "\t\t\t<integer>2</integer>\n"
+	else
+		outputAbbrevs.concat "\t\t\t<integer>0</integer>\n"
+	end
+
     outputAbbrevs.concat "\t\t\t<key>flags</key>\n"
     outputAbbrevs.concat "\t\t\t<integer>0</integer>\n"
     outputAbbrevs.concat "\t\t\t<key>plainText</key>\n"
